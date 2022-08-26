@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer that choke</title>
+</head>
+
+<body>
+    <h1 id="header"></h1>
+    <h2 id="timer-text">0</h2>
+
+    <button id="btn-start">Start Timer</button>
+    <button id="btn-pause">Pause Timer</button>
+
+
+
+
+
+
+    <script type="text/javascript">
+        const snacks = [
+            "peanut butter",
+            "twix",
+            "milky ways",
+            "payday",
+            "snickers",
+            "babyruth",
+            "mounds",
+            "100-grands",
+            "take-5",
+            "kit kat",
+            "M&M",
+        ];
+
+        //   solution
+        // 1. at what time you want it to display
+        // 2. display at random
+        // 3 display is an html (Dom)
+
+
+        setInterval(() => {
+            const randText = Math.floor(Math.random() * snacks.length);
+            document.getElementById("header").innerHTML = snacks[randText];
+        }, 1000);
+
+
+
+        const timerText = document.getElementById("timer-text");
+        const btnStart = document.getElementById("btn-start");
+        const btnPause = document.getElementById("btn-pause");
+
+        let count = 0;
+        let intervalID;
+
+        btnStart.addEventListener("click", function() {
+            intervalID = setInterval(function() {
+                count += 1;
+                timerText.textContent = count;
+            }, 1000);
+        })
+
+        btnPause.addEventListener("click", function() {
+            clearInterval(intervalID);
+        })
+    </script>
+</body>
+
+</html>
